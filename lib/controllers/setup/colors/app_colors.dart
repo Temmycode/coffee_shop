@@ -8,4 +8,6 @@ class AppColors {
   static final Color brown = '#C67C4E'.toColor();
   static final Color lightBrown = '#FFF5EE'.toColor();
   static final Color starGold = '#E4EDFA'.toColor();
+  static final Color searchBar = '#313131'.toColor();
+  static final Color red = '#ED5151'.toColor();
 }

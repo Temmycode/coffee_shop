@@ -1,8 +1,32 @@
+import 'package:coffee_shop/controllers/constants/coffee_types.dart';
+import 'package:coffee_shop/controllers/setup/colors/app_colors.dart';
+import 'package:coffee_shop/controllers/setup/text/small_text.dart';
 import 'package:coffee_shop/views/extensions/dimension.dart';
+import 'package:coffee_shop/views/widgets/coffee_type_tabviews.dart';
+import 'package:coffee_shop/views/widgets/custom_app_bar.dart';
+import 'package:coffee_shop/views/widgets/promo_view_container.dart';
 import 'package:flutter/material.dart';
 
-class HomePurchasePage extends StatelessWidget {
+class HomePurchasePage extends StatefulWidget {
   const HomePurchasePage({super.key});
+
+  @override
+  State<HomePurchasePage> createState() => _HomePurchasePageState();
+}
+
+class _HomePurchasePageState extends State<HomePurchasePage>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _tabController = TabController(
+      length: coffeTypes.length,
+      vsync: this,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,65 +38,39 @@ class HomePurchasePage extends StatelessWidget {
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
               const CustomAppBar(),
-              // promotions
-              SliverToBoxAdapter(
-                child: SizedBox(height: height * AppDimensions.height33),
+              SizedBox(
+                height: 28.h(context),
               ),
-              SliverPadding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: width * AppDimensions.width35,
-                ),
-                sliver: SliverToBoxAdapter(
-                  child: SizedBox(
-                    height: height * AppDimensions.height192,
-                    child: PageView.builder(
-                      padEnds: true,
-                      controller: _pageController,
-                      itemCount: promotionConstants.length,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: PromotionContainer(
-                            image: promotionConstants[index][0],
+              const SearchBar(),
+              SizedBox(
+                height: 24.h(context),
+              ),
+              const PromoViewContainer(),
+              SizedBox(
+                height: 24.h(context),
+              ),
+              TabBar(
+                tabs: coffeTypes
+                    .map(
+                      (coffee) => Tab(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                              12.h(context),
+                            ),
+                            color: AppColors.brown,
                           ),
-                        );
-                      },
-                    ),
-                  ),
-                ),
-              ),
-              SliverToBoxAdapter(
-                child: SizedBox(
-                  height: height * AppDimensions.height36,
-                ),
-              ),
-              // ITEM CATEGORY SECTIONS:
-              SliverToBoxAdapter(
-                child: Align(
-                  alignment: Alignment.center,
-                  child: TabBar(
-                    labelStyle: const TextStyle(fontWeight: FontWeight.w700),
-                    unselectedLabelStyle:
-                        const TextStyle(fontWeight: FontWeight.w400),
-                    labelColor: Colors.black,
-                    indicatorColor: Colors.black,
-                    indicatorWeight: 2,
-                    isScrollable: true,
-                    controller: _tabController,
-                    tabs: itemCategoryConstant
-                        .map(
-                          (item) => Tab(
-                            text: item,
-                            // st
+                          child: SmallText(
+                            text: coffee,
+                            size: 14.h(context),
+                            weight: FontWeight.w600,
+                            color: Colors.black,
                           ),
-                        )
-                        .toList(),
-                  ),
-                ),
-              ),
-              SliverToBoxAdapter(
-                child: SizedBox(height: height * AppDimensions.height26),
-              ),
+                        ),
+                      ),
+                    )
+                    .toList(),
+              )
             ];
           },
 
@@ -81,11 +79,11 @@ class HomePurchasePage extends StatelessWidget {
           // the loading screening is intended to be a shimmer of the current UI
           body: TabBarView(
             controller: _tabController,
-            children: itemCategoryConstant
+            children: coffeTypes
                 .map(
                   (item) =>
                       // passing the category to the grid view to display the data in the different categories
-                      CategoryTabView(
+                      CoffeeTypeTabviews(
                     category: item,
                   ),
                 )

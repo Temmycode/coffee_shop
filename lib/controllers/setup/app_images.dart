@@ -19,4 +19,9 @@ class AppImages {
   static const String moneys = '$iconSrc/moneys.png';
   static const String settings = '$iconSrc/settings.png';
   static const String star = '$iconSrc/star.png';
+  static const String search = '$iconSrc/search.png';
+  static const String home = '$iconSrc/home.png';
+  static const String likes = '$iconSrc/heart.png';
+  static const String cart = '$iconSrc/cart.png';
+  static const String notification = '$iconSrc/notification.png';
 }

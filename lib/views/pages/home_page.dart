@@ -1,8 +1,9 @@
 import 'package:coffee_shop/controllers/constants/pages.dart';
 import 'package:coffee_shop/controllers/providers/home_page_current_index_provider.dart';
+import 'package:coffee_shop/controllers/setup/app_images.dart';
 import 'package:coffee_shop/controllers/setup/colors/app_colors.dart';
 import 'package:coffee_shop/views/extensions/dimension.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:coffee_shop/views/extensions/to_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -23,13 +24,36 @@ class HomePage extends ConsumerWidget {
             ),
           ),
         ),
-        child: const Row(
+        child: Row(
           children: [
-            // TODO: FIX THE BOTTOM NAVIGATONS
-            Icon(Icons.home),
-            Icon(CupertinoIcons.heart_fill),
-            Icon(Icons.shopping_bag),
-            Icon(CupertinoIcons.bell_fill),
+            GestureDetector(
+              onTap: () =>
+                  ref.read(homePageCurrentIndexProvider.notifier).state = 0,
+              child: AppImages.home.toIcon(
+                size: 20.h(context),
+              ),
+            ),
+            GestureDetector(
+              onTap: () =>
+                  ref.read(homePageCurrentIndexProvider.notifier).state = 1,
+              child: AppImages.likes.toIcon(
+                size: 20.h(context),
+              ),
+            ),
+            GestureDetector(
+              onTap: () =>
+                  ref.read(homePageCurrentIndexProvider.notifier).state = 2,
+              child: AppImages.cart.toIcon(
+                size: 20.h(context),
+              ),
+            ),
+            GestureDetector(
+              onTap: () =>
+                  ref.read(homePageCurrentIndexProvider.notifier).state = 3,
+              child: AppImages.notification.toIcon(
+                size: 20.h(context),
+              ),
+            ),
           ],
         ),
       ),
