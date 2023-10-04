@@ -25,5 +25,6 @@ class AppImages {
   static const String cart = '$iconSrc/cart.png';
   static const String edit = '$iconSrc/edit.png';
   static const String note = '$iconSrc/note.png';
+  static const String more = '$iconSrc/more.png';
   static const String notification = '$iconSrc/notification.png';
 }

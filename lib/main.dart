@@ -22,27 +22,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      home: const Scaffold(
+        body: HomePage(),
+      ),
     );
   }
 }
-
-// class ButtonMover extends StatelessWidget {
-//   const ButtonMover({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: SafeArea(
-//         child: Column(
-//           children: [
-//             // ButtonInputElement()
-//             Container(
-//               child: ButtonActivateIntent(),
-//             )
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }

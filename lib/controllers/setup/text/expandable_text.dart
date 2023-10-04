@@ -1,3 +1,4 @@
+import 'package:coffee_shop/controllers/setup/colors/app_colors.dart';
 import 'package:coffee_shop/controllers/setup/text/small_text.dart';
 import 'package:coffee_shop/views/extensions/dimension.dart';
 import 'package:flutter/material.dart';
@@ -58,8 +59,7 @@ class _ExpandableTextWidgetState extends State<ExpandableTextWidget> {
                     padding: const EdgeInsets.only(bottom: 10),
                     child: SmallText(
                       text: hiddenText ? 'More detailed' : 'Less detailed',
-                      // TODO : BROW COLOR SHOULD BE HERE
-                      color: Colors.grey,
+                      color: AppColors.brown,
                     ),
                   ),
                 )

@@ -5,6 +5,8 @@ import 'package:coffee_shop/controllers/setup/text/small_text.dart';
 import 'package:coffee_shop/controllers/setup/text/title_text.dart';
 import 'package:coffee_shop/views/extensions/dimension.dart';
 import 'package:coffee_shop/views/extensions/to_icon.dart';
+import 'package:coffee_shop/views/pages/order_page.dart';
+import 'package:coffee_shop/views/widgets/milk_beans_button.dart';
 import 'package:coffee_shop/views/widgets/size_buttons/large_button.dart';
 import 'package:coffee_shop/views/widgets/size_buttons/medium_button.dart';
 import 'package:coffee_shop/views/widgets/size_buttons/small_button.dart';
@@ -20,6 +22,7 @@ class DetailItemPage extends ConsumerStatefulWidget {
   final num rating;
   final int noOfBuys;
   final double price;
+
   const DetailItemPage({
     super.key,
     required this.heroTag,
@@ -132,7 +135,6 @@ class _DetailItemPageState extends ConsumerState<DetailItemPage> {
             // COFFE RATINGS
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
@@ -158,6 +160,30 @@ class _DetailItemPageState extends ConsumerState<DetailItemPage> {
                 ),
 
                 // BEANS AND MILK OPTION
+
+                // bean
+                Row(
+                  children: [
+                    MilkBeansButton(
+                      icon: AppImages.bean.toIcon(
+                        size: 24.h(context),
+                        color: AppColors.brown,
+                      ),
+                    ),
+
+                    SizedBox(
+                      width: 12.w(context),
+                    ),
+
+                    // milk
+                    MilkBeansButton(
+                      icon: AppImages.milk.toIcon(
+                        size: 24.h(context),
+                        color: AppColors.brown,
+                      ),
+                    ),
+                  ],
+                )
               ],
             ),
 
@@ -271,8 +297,28 @@ class _DetailItemPageState extends ConsumerState<DetailItemPage> {
                 SizedBox(
                   width: 42.w(context),
                 ),
+
+                // BUY BUTTON
                 InkWell(
-                  onTap: () {},
+                  // this
+                  onTap: () {
+                    // this function should take to the order page and do the buying functionality
+                    // for now i will just proceed to the order page since this is just the UI
+
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => OrderPage(
+                          image: widget.imageUrl,
+                          amount: 1,
+                          title: widget.title,
+                          subtitle: widget.subTitle,
+                          price: widget.price,
+                          heroTag: widget.heroTag,
+                          coffeeSize: _sizeIndex,
+                        ),
+                      ),
+                    );
+                  },
                   borderRadius: BorderRadius.circular(
                     16.h(context),
                   ),

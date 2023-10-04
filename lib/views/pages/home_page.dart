@@ -20,7 +20,7 @@ class HomePage extends ConsumerWidget {
       body: pages[currentIndex],
       bottomNavigationBar: Container(
         padding: EdgeInsets.symmetric(
-          horizontal: 30.w(context),
+          horizontal: 10.w(context),
         ),
         height: 99.h(context),
         width: double.maxFinite,
@@ -35,40 +35,52 @@ class HomePage extends ConsumerWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            CupertinoButton(
-              onPressed: () =>
-                  ref.read(homePageCurrentIndexProvider.notifier).state = 0,
-              child: AppImages.home.toIcon(
-                size: 20.h(context),
-                color:
-                    currentIndex == 0 ? AppColors.brown : Colors.grey.shade500,
+            Expanded(
+              child: CupertinoButton(
+                onPressed: () =>
+                    ref.read(homePageCurrentIndexProvider.notifier).state = 0,
+                child: AppImages.home.toIcon(
+                  size: 20.h(context),
+                  color: currentIndex == 0
+                      ? AppColors.brown
+                      : Colors.grey.shade500,
+                ),
               ),
             ),
-            CupertinoButton(
-              onPressed: () =>
-                  ref.read(homePageCurrentIndexProvider.notifier).state = 1,
-              child: AppImages.likes.toIcon(
-                size: 20.h(context),
-                color:
-                    currentIndex == 1 ? AppColors.brown : Colors.grey.shade500,
+            Expanded(
+              child: CupertinoButton(
+                onPressed: () =>
+                    ref.read(homePageCurrentIndexProvider.notifier).state = 1,
+                child: AppImages.likes.toIcon(
+                  size: 20.h(context),
+                  color: currentIndex == 1
+                      ? AppColors.brown
+                      : Colors.grey.shade500,
+                ),
               ),
             ),
-            CupertinoButton(
-              onPressed: () =>
-                  ref.read(homePageCurrentIndexProvider.notifier).state = 2,
-              child: AppImages.cart.toIcon(
-                size: 20.h(context),
-                color:
-                    currentIndex == 1 ? AppColors.brown : Colors.grey.shade500,
+            Expanded(
+              child: CupertinoButton(
+                onPressed: () =>
+                    ref.read(homePageCurrentIndexProvider.notifier).state = 2,
+                child: AppImages.cart.toIcon(
+                  size: 20.h(context),
+                  color: currentIndex == 2
+                      ? AppColors.brown
+                      : Colors.grey.shade500,
+                ),
               ),
             ),
-            CupertinoButton(
-              onPressed: () =>
-                  ref.read(homePageCurrentIndexProvider.notifier).state = 3,
-              child: AppImages.notification.toIcon(
-                size: 20.h(context),
-                color:
-                    currentIndex == 1 ? AppColors.brown : Colors.grey.shade500,
+            Expanded(
+              child: CupertinoButton(
+                onPressed: () =>
+                    ref.read(homePageCurrentIndexProvider.notifier).state = 3,
+                child: AppImages.notification.toIcon(
+                  size: 20.h(context),
+                  color: currentIndex == 3
+                      ? AppColors.brown
+                      : Colors.grey.shade500,
+                ),
               ),
             ),
           ],
