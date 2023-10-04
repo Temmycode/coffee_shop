@@ -38,6 +38,7 @@ class _ExpandableTextWidgetState extends State<ExpandableTextWidget> {
               size: 14.h(context),
               text: firstHalf,
               spacing: 0.7,
+              color: Colors.grey,
             )
           : Column(
               children: [
@@ -45,6 +46,7 @@ class _ExpandableTextWidgetState extends State<ExpandableTextWidget> {
                   size: 14.h(context),
                   text: hiddenText ? "$firstHalf..." : (firstHalf + secondHalf),
                   spacing: 0.7,
+                  color: Colors.grey,
                 ),
                 InkWell(
                   onTap: () {

@@ -34,7 +34,7 @@ class CoffeeContainer extends StatelessWidget {
         bottom: 17.h(context),
       ),
       width: 149.w(context),
-      height: 239.h(context),
+      height: 255.h(context),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(
           16.h(context),
@@ -42,13 +42,32 @@ class CoffeeContainer extends StatelessWidget {
         color: Colors.white,
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // IMAGE OF THE COFFEE AND THE START
           Stack(
             children: [
               // the number of stars of the coffee
+
+              Hero(
+                tag: image,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(
+                    16.h(context),
+                  ),
+                  child: Image.asset(
+                    image,
+                    height: 132.h(context),
+                    width: 149.w(context),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+
               Positioned(
+                top: 5.h(context),
+                left: 7.w(context),
                 child: Row(
                   children: [
                     // the star icon
@@ -70,17 +89,6 @@ class CoffeeContainer extends StatelessWidget {
                   ],
                 ),
               ),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(
-                  16.h(context),
-                ),
-                child: Image.asset(
-                  image,
-                  height: 132.h(context),
-                  width: 141.w(context),
-                  fit: BoxFit.cover,
-                ),
-              ),
             ],
           ),
 
@@ -89,54 +97,70 @@ class CoffeeContainer extends StatelessWidget {
           ),
 
           // COFFEE TYPE NAME
-          TitleText(
-            text: coffeeType,
-            size: 16.h(context),
-            color: Colors.black,
-          ),
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 8.w(context),
+            ),
+            child: Column(
+              children: [
+                TitleText(
+                  text: coffeeType,
+                  size: 16.h(context),
+                  color: Colors.black,
+                ),
 
-          SizedBox(
-            height: 4.h(context),
-          ),
+                SizedBox(
+                  height: 4.h(context),
+                ),
 
-          // COFFEE NAME
-          SmallText(
-            text: coffeeName,
-            color: Colors.grey,
+                // COFFEE NAME
+                SmallText(
+                  text: coffeeName,
+                  color: Colors.grey,
+                ),
+              ],
+            ),
           ),
 
           SizedBox(
             height: 12.h(context),
           ),
 
-          Row(
-            children: [
-              // COFFEE PRICE
-              TitleText(
-                text: '\$ $price',
-                size: 18.h(context),
-              ),
-
-              // ADD TO CART BUTTON
-              GestureDetector(
-                onTap: onTap,
-                child: Container(
-                  alignment: Alignment.center,
-                  width: 32.w(context),
-                  height: 32.h(context),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(
-                      10.h(context),
-                    ),
-                    color: AppColors.brown,
-                  ),
-                  child: Icon(
-                    Icons.add,
-                    size: 16.h(context),
-                  ),
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 8.w(context),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // COFFEE PRICE
+                TitleText(
+                  text: '\$ $price',
+                  size: 18.h(context),
                 ),
-              )
-            ],
+
+                // ADD TO CART BUTTON
+                GestureDetector(
+                  onTap: onTap,
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: 32.w(context),
+                    height: 32.h(context),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(
+                        10.h(context),
+                      ),
+                      color: AppColors.brown,
+                    ),
+                    child: Icon(
+                      Icons.add,
+                      color: AppColors.white,
+                      size: 16.h(context),
+                    ),
+                  ),
+                )
+              ],
+            ),
           )
         ],
       ),

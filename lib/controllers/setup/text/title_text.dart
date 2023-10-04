@@ -7,6 +7,7 @@ class TitleText extends StatelessWidget {
   final Color? color;
   final FontWeight? weight;
   final TextOverflow? overflow;
+  final bool? shadow;
   const TitleText({
     super.key,
     required this.text,
@@ -14,6 +15,7 @@ class TitleText extends StatelessWidget {
     this.color = Colors.black,
     this.weight = FontWeight.bold,
     this.overflow = TextOverflow.ellipsis,
+    this.shadow,
   });
 
   @override
@@ -27,6 +29,15 @@ class TitleText extends StatelessWidget {
         overflow: overflow == TextOverflow.ellipsis
             ? TextOverflow.ellipsis
             : overflow,
+        shadows: shadow == true
+            ? const [
+                Shadow(
+                  color: Colors.black54,
+                  blurRadius: 5.0,
+                  offset: Offset(4, 4),
+                )
+              ]
+            : null,
       ),
     );
   }

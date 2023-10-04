@@ -36,7 +36,7 @@ class DetailItemPage extends ConsumerStatefulWidget {
 }
 
 class _DetailItemPageState extends ConsumerState<DetailItemPage> {
-  int _sizeIndex = 1;
+  int _sizeIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,6 +47,7 @@ class _DetailItemPageState extends ConsumerState<DetailItemPage> {
           left: 30.h(context),
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(
@@ -57,9 +58,12 @@ class _DetailItemPageState extends ConsumerState<DetailItemPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 // back arrow
-                Icon(
-                  Icons.arrow_back_ios,
-                  size: 17.99.h(context),
+                InkWell(
+                  onTap: () => Navigator.pop(context),
+                  child: Icon(
+                    Icons.arrow_back_ios,
+                    size: 17.99.h(context),
+                  ),
                 ),
 
                 // details
@@ -95,10 +99,11 @@ class _DetailItemPageState extends ConsumerState<DetailItemPage> {
                   borderRadius: BorderRadius.circular(
                     16.h(context),
                   ),
-                  child: Image.network(
+                  child: Image.asset(
                     widget.imageUrl,
                     height: 226.h(context),
-                    width: 315.w(context),
+                    width: double.maxFinite,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
@@ -115,7 +120,10 @@ class _DetailItemPageState extends ConsumerState<DetailItemPage> {
               height: 8.h(context),
             ),
             // subtitle
-            SmallText(text: widget.subTitle),
+            SmallText(
+              text: widget.subTitle,
+              color: Colors.grey,
+            ),
 
             SizedBox(
               height: 16.h(context),
@@ -143,7 +151,7 @@ class _DetailItemPageState extends ConsumerState<DetailItemPage> {
 
                     // number of buys
                     SmallText(
-                      text: "( ${widget.noOfBuys})",
+                      text: "  (${widget.noOfBuys})",
                       color: Colors.grey.shade600,
                     ),
                   ],
@@ -154,14 +162,14 @@ class _DetailItemPageState extends ConsumerState<DetailItemPage> {
             ),
 
             SizedBox(
-              height: 20.h(context),
+              height: 10.h(context),
             ),
 
             // DIVIDER
             const Divider(),
 
             SizedBox(
-              height: 20.h(context),
+              height: 10.h(context),
             ),
 
             TitleText(
@@ -176,9 +184,7 @@ class _DetailItemPageState extends ConsumerState<DetailItemPage> {
             // THE DESCRIPTION OF THE COFFEE
             const ExpandableTextWidget(text: "Temiloluwa"),
 
-            SizedBox(
-              height: 20.h(context),
-            ),
+            const Spacer(),
 
             // SIZE SELECTION SECTION
             TitleText(
@@ -215,7 +221,11 @@ class _DetailItemPageState extends ConsumerState<DetailItemPage> {
                   ),
                 ],
               ),
-            )
+            ),
+
+            SizedBox(
+              height: 20.h(context),
+            ),
           ],
         ),
       ),
@@ -239,6 +249,7 @@ class _DetailItemPageState extends ConsumerState<DetailItemPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // price
                     SmallText(
@@ -252,7 +263,7 @@ class _DetailItemPageState extends ConsumerState<DetailItemPage> {
                     ),
 
                     TitleText(
-                      text: widget.price.toStringAsFixed(2),
+                      text: '\$${widget.price.toStringAsFixed(2)}',
                       color: AppColors.brown,
                     ),
                   ],
@@ -261,10 +272,12 @@ class _DetailItemPageState extends ConsumerState<DetailItemPage> {
                   width: 42.w(context),
                 ),
                 InkWell(
+                  onTap: () {},
                   borderRadius: BorderRadius.circular(
                     16.h(context),
                   ),
                   child: Ink(
+                    height: 62.h(context),
                     width: 217.w(context),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(

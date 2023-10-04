@@ -5,9 +5,9 @@ class AppImages {
 
   // images
   static const String capucino = '$imgSrc/capucino.png';
-  static const String chocolateCapucino = '$imgSrc/chocolate_capucino.png';
+  static const String chocolateCapucino = '$imgSrc/chocolate_capu.png';
   static const String laate = '$imgSrc/laate.png';
-  static const String oatMilk = '$imgSrc/oat_milk_capucino.png';
+  static const String oatMilk = '$imgSrc/oat_milk_capu.png';
   static const String promoCoffee = '$imgSrc/promo_coffee.png';
   static const String user = '$imgSrc/user.png';
   static const String promo = '$imgSrc/promo.png';
@@ -23,5 +23,7 @@ class AppImages {
   static const String home = '$iconSrc/home.png';
   static const String likes = '$iconSrc/heart.png';
   static const String cart = '$iconSrc/cart.png';
+  static const String edit = '$iconSrc/edit.png';
+  static const String note = '$iconSrc/note.png';
   static const String notification = '$iconSrc/notification.png';
 }

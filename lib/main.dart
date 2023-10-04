@@ -2,9 +2,10 @@
 import 'package:coffee_shop/controllers/setup/colors/app_colors.dart';
 import 'package:coffee_shop/views/pages/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

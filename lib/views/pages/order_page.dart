@@ -1,6 +1,10 @@
+import 'package:coffee_shop/controllers/setup/app_images.dart';
 import 'package:coffee_shop/controllers/setup/text/small_text.dart';
 import 'package:coffee_shop/controllers/setup/text/title_text.dart';
 import 'package:coffee_shop/views/extensions/dimension.dart';
+import 'package:coffee_shop/views/extensions/to_icon.dart';
+import 'package:coffee_shop/views/widgets/address_container.dart';
+import 'package:coffee_shop/views/widgets/order_tile.dart';
 import 'package:flutter/material.dart';
 
 class OrderPage extends StatelessWidget {
@@ -92,7 +96,57 @@ class OrderPage extends StatelessWidget {
                 ),
 
                 Row(
-                  children: [],
+                  children: [
+                    // edit address container
+                    AddressContainer(
+                      onTap: () {},
+                      text: "Edit Address",
+                      icon: AppImages.edit.toIcon(
+                        color: Colors.black,
+                        size: 14.h(context),
+                      ),
+                    ),
+
+                    SizedBox(
+                      width: 8.w(context),
+                    ),
+
+                    // add a note
+                    AddressContainer(
+                      onTap: () {},
+                      text: "Add Note",
+                      icon: AppImages.note.toIcon(
+                        color: Colors.black,
+                        size: 14.h(context),
+                      ),
+                    )
+                  ],
+                ),
+
+                SizedBox(
+                  height: 20.h(context),
+                ),
+
+                // a divider (just UI)
+                const Divider(),
+
+                SizedBox(
+                  height: 20.h(context),
+                ),
+
+                // the set of coffees to be ordered
+                const OrderTile(
+                  image: AppImages.capucino,
+                  title: "Cappucino",
+                  subtitle: 'with Chocolate',
+                  number: 1,
+                ),
+
+                // a strip of grey line dividing the screen
+                Container(
+                  width: double.maxFinite,
+                  height: 4.h(context),
+                  color: Colors.grey.shade100,
                 )
               ],
             ),
